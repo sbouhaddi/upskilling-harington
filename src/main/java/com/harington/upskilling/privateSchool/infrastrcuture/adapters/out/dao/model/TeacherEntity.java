@@ -1,5 +1,6 @@
-package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.repository.model;
+package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model;
 
+import com.harington.upskilling.privateSchool.application.domain.model.Teacher;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,8 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-public class Teacher {
+@Entity(name = "teacher")
+public class TeacherEntity implements DataModel<Teacher> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +22,12 @@ public class Teacher {
 
     @Column(name = "descritption", length = 50)
     private String descritption;
+
+    @Override
+    public Teacher toDomaimModel() {
+        return null;
+    }
+
+    @Override
+    public void toEntity(Teacher domainModel) {}
 }

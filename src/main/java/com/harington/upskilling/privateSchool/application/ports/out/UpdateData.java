@@ -4,5 +4,5 @@ import com.harington.upskilling.privateSchool.application.domain.model.DomainMod
 
 public interface UpdateData<T extends DomainModel> {
 
-    void update(T data);
+    void update(long id, T data);
 }

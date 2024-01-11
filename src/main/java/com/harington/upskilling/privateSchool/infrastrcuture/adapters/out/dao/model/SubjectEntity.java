@@ -1,15 +1,16 @@
-package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.repository.model;
+package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model;
 
+import com.harington.upskilling.privateSchool.application.domain.model.Subject;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "subject")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Subject {
+public class SubjectEntity implements DataModel<Subject> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +23,11 @@ public class Subject {
     @Column(name = "description", length = 50)
     private String description;
 
+    @Override
+    public Subject toDomaimModel() {
+        return null;
+    }
+
+    @Override
+    public void toEntity(Subject domainModel) {}
 }

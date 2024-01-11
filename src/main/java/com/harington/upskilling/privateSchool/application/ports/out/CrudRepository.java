@@ -1,11 +1,5 @@
 package com.harington.upskilling.privateSchool.application.ports.out;
 
 import com.harington.upskilling.privateSchool.application.domain.model.DomainModel;
-import java.util.List;
 
-public interface GetData<T extends DomainModel> {
-
-    T get(long id);
-
-    List<T> getAll();
-}
+public interface CrudRepository<T extends DomainModel> extends GetData<T>, CreateData<T>, UpdateData<T>, DeletedData {}
