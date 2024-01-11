@@ -27,12 +27,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
+        <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-docker-compose</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -63,6 +63,13 @@
             <artifactId>postgresql</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -122,6 +129,47 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <executions>
+                    <execution>
+                        <id>jooq-codegen</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <jdbc>
+                                <driver>org.h2.Driver</driver>
+                                <url>jdbc:h2:mem:schooldb</url>
+                                <user>test</user>
+                                <password>test</password>
+                            </jdbc>
+                            <generator>
+                                <database>
+                                    <name>org.jooq.meta.h2.H2Database</name>
+                                    <includes>.*</includes>
+                                    <excludes/>
+                                    <inputSchema>schooldb</inputSchema>
+                                </database>
+                                <generate>
+                                    <pojos>true</pojos>
+                                    <pojosEqualsAndHashCode>true</pojosEqualsAndHashCode>
+                                    <javaTimeTypes>true</javaTimeTypes>
+                                    <fluentSetters>true</fluentSetters>
+                                </generate>
+                                <target>
+                                    <packageName>com.harington.JooQ.privateshcool.model</packageName>
+                                    <directory>target/generated-sources/jooq</directory>
+                                </target>
+                            </generator>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
     </build>
