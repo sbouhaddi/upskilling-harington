@@ -26,9 +26,7 @@ public class ClasseOutPort implements CrudRepository<Classe> {
     }
 
     @Override
-    public void save(Classe data) {
-        // dslContext.insertInto()
-    }
+    public void save(Classe data) {}
 
     @Override
     public void update(Classe data) {

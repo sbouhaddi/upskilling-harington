@@ -13,9 +13,7 @@ import com.harington.upskilling.privateSchool.application.ports.in.ClasseUseCase
 import com.harington.upskilling.privateSchool.application.ports.in.data.CreateClasseRequest;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest.ClasseController;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest.exceptionHandler.ApiErrorResponse;
-import com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest.exceptionHandler.RestExceptionHandler;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -29,7 +27,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringRunner.class)
 @ExtendWith(MockitoExtension.class)
@@ -86,7 +83,6 @@ public class ClasseControllerTest {
         verify(classeUseCase, times(1)).get(classeCaptor.capture());
     }
 
-
     @Test
     public void whenGetNotExistingClasse_thenReturnNotFoundResponseError() throws JsonProcessingException, Exception {
         when(classeUseCase.get(1000)).thenThrow(new RecordNotFoundException("Classe introuvable"));
@@ -105,5 +101,4 @@ public class ClasseControllerTest {
         ArgumentCaptor<Long> classeCaptor = ArgumentCaptor.forClass(Long.class);
         verify(classeUseCase, times(1)).get(classeCaptor.capture());
     }
-
 }
