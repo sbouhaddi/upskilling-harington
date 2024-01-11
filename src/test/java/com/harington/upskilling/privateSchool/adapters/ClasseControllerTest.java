@@ -7,18 +7,23 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.harington.upskilling.privateSchool.application.domain.exceptions.RecordNotFoundException;
 import com.harington.upskilling.privateSchool.application.domain.model.Classe;
 import com.harington.upskilling.privateSchool.application.ports.in.ClasseUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.data.CreateClasseRequest;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest.ClasseController;
+import com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest.exceptionHandler.ApiErrorResponse;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest.exceptionHandler.RestExceptionHandler;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -27,18 +32,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(SpringRunner.class)
+@ExtendWith(MockitoExtension.class)
 @WebMvcTest(controllers = {ClasseController.class})
 public class ClasseControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @BeforeAll
-    public void setUp() {
-        mockMvc = MockMvcBuilders.standaloneSetup(ClasseController.class)
-                .setControllerAdvice(new RestExceptionHandler())
-                .build();
-    }
 
     private final ObjectMapper mapper = new ObjectMapper();
 
@@ -79,7 +78,6 @@ public class ClasseControllerTest {
 
         String responseContent = result.getResponse().getContentAsString();
         Classe response = mapper.readValue(responseContent, Classe.class);
-
         assertEquals(1000, response.id());
         assertEquals("CP1", response.libelle());
         assertEquals("Niveau 1 primaire", response.description());
@@ -87,4 +85,25 @@ public class ClasseControllerTest {
         ArgumentCaptor<Long> classeCaptor = ArgumentCaptor.forClass(Long.class);
         verify(classeUseCase, times(1)).get(classeCaptor.capture());
     }
+
+
+    @Test
+    public void whenGetNotExistingClasse_thenReturnNotFoundResponseError() throws JsonProcessingException, Exception {
+        when(classeUseCase.get(1000)).thenThrow(new RecordNotFoundException("Classe introuvable"));
+
+        MvcResult result = mockMvc.perform(
+                        MockMvcRequestBuilders.get("/v1/classes/{id}", 1000).contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+        String responseContent = result.getResponse().getContentAsString();
+        ApiErrorResponse errorResponse = mapper.readValue(responseContent, ApiErrorResponse.class);
+
+        assertEquals(HttpStatus.NOT_FOUND.value(), errorResponse.statut());
+        assertNotNull(errorResponse.message());
+
+        ArgumentCaptor<Long> classeCaptor = ArgumentCaptor.forClass(Long.class);
+        verify(classeUseCase, times(1)).get(classeCaptor.capture());
+    }
+
 }
