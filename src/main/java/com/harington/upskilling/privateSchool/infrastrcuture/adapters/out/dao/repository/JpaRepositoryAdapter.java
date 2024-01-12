@@ -2,18 +2,18 @@ package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.r
 
 import com.harington.upskilling.privateSchool.application.domain.exceptions.RecordNotFoundException;
 import com.harington.upskilling.privateSchool.application.domain.model.DomainModel;
-import com.harington.upskilling.privateSchool.application.ports.out.CrudRepository;
+import com.harington.upskilling.privateSchool.application.ports.out.DomainDAOPort;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model.DataModel;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public class JpaCrudRepository<T extends DomainModel, E extends DataModel<T>, R extends JpaRepository<E, Long>>
-        implements CrudRepository<T> {
+public class JpaRepositoryAdapter<T extends DomainModel, E extends DataModel<T>, R extends JpaRepository<E, Long>>
+        implements DomainDAOPort<T> {
 
     R repository;
 
-    public JpaCrudRepository(R r) {
+    public JpaRepositoryAdapter(R r) {
         this.repository = r;
     }
 

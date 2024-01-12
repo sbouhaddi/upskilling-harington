@@ -5,8 +5,9 @@ import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.mo
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ClasseOutPort extends JpaCrudRepository<Classe, ClasseEntity, ClasseJpaRepository> {
-    public ClasseOutPort(ClasseJpaRepository classeJpaRepository) {
+public class ClasseRepositoryAdapter extends JpaRepositoryAdapter<Classe, ClasseEntity, ClasseJpaRepository> {
+
+    public ClasseRepositoryAdapter(ClasseJpaRepository classeJpaRepository) {
         super(classeJpaRepository);
     }
 }
