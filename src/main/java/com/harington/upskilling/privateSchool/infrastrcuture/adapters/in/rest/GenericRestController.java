@@ -6,6 +6,8 @@ import com.harington.upskilling.privateSchool.application.ports.in.generics.Crud
 import com.harington.upskilling.privateSchool.application.ports.in.generics.UpdateRequest;
 import java.net.URI;
 import java.util.List;
+
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,18 +38,22 @@ public class GenericRestController<T extends DomainModel, C extends CreateReques
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") long id) {
         crudUseCase.delete(id);
     }
 
     @GetMapping("/{id}")
-    public T get(@PathVariable("id") long id) {
-        return crudUseCase.get(id);
+    public ResponseEntity<T> get(@PathVariable("id") long id) {
+
+        T body = crudUseCase.get(id);
+
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("")
-    public List<T> getAll() {
-        return crudUseCase.getAll();
+    public ResponseEntity<List<T>> getAll() {
+        return ResponseEntity.ok(crudUseCase.getAll());
     }
 
     public void update(@PathVariable("id") long id, @RequestBody U updateClasseRequest) {

@@ -7,7 +7,6 @@ public class UpdateClasseRequest extends UpdateRequest<Classe> {
 
     @Override
     public Classe toDomainModel() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toDomainModel'");
+        return null;
     }
 }

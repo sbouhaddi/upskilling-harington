@@ -1,5 +1,5 @@
 package com.harington.upskilling.privateSchool.application.domain.model;
 
-public interface DomainModel {
-    long id();
+public abstract class DomainModel {
+    public abstract long id();
 }

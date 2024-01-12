@@ -1,15 +1,36 @@
 package com.harington.upskilling.privateSchool.application.domain.model;
 
-import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-public record Subject(long id, @NotBlank String libelle, String description) implements DomainModel {
+@NoArgsConstructor
+@Getter
+public class Subject extends DomainModel {
+    private long id;
+    private String libelle;
+    private String description;
+
+    public Subject(long id, String libelle, String description) {
+        this.id = id;
+        this.libelle = libelle;
+        this.description = description;
+    }
 
     public Subject(String libelle, String description) {
-        this(IdGenerator.id(), libelle, description);
+        this.libelle = libelle;
+        this.description = description;
     }
 
     @Override
     public long id() {
         return id;
+    }
+
+    public String libelle() {
+        return libelle;
+    }
+
+    public String description() {
+        return description;
     }
 }

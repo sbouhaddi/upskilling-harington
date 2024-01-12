@@ -22,11 +22,5 @@ public class ClasseEntity implements DataModel<Classe> {
     @Column(name = "description", length = 50)
     private String description;
 
-    @Override
-    public Classe toDomaimModel() {
-        return null;
-    }
 
-    @Override
-    public void toEntity(Classe domainModel) {}
 }

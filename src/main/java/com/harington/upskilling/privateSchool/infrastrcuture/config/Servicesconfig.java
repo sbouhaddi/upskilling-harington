@@ -8,15 +8,20 @@ import com.harington.upskilling.privateSchool.application.ports.in.ClasseUseCase
 import com.harington.upskilling.privateSchool.application.ports.in.StudentUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.SubjectUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.TeacherUseCase;
+import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.ClasseRepositoryAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Servicesconfig {
 
+    @Autowired
+    private ClasseRepositoryAdapter classeRepositoryAdapter;
+
     @Bean
     public ClasseUseCase classeUseCase() {
-        return new ClasseService();
+        return new ClasseService(classeRepositoryAdapter);
     }
 
     @Bean

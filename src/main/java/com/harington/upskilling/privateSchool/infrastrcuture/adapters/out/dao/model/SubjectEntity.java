@@ -23,11 +23,5 @@ public class SubjectEntity implements DataModel<Subject> {
     @Column(name = "description", length = 50)
     private String description;
 
-    @Override
-    public Subject toDomaimModel() {
-        return null;
-    }
 
-    @Override
-    public void toEntity(Subject domainModel) {}
 }

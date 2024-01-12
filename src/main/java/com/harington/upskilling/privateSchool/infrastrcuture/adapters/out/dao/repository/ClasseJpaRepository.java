@@ -1,6 +1,6 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository;
 
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model.ClasseEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.generic.GenericJpaRepository;
 
-public interface ClasseJpaRepository extends JpaRepository<ClasseEntity, Long> {}
+public interface ClasseJpaRepository extends GenericJpaRepository<ClasseEntity, Long> {}
