@@ -22,5 +22,4 @@ public class TeacherEntity implements DataModel<Teacher> {
 
     @Column(name = "descritption", length = 50)
     private String descritption;
-
 }

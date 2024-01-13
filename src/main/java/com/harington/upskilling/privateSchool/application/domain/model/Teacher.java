@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
-
 public class Teacher extends DomainModel {
     private long id;
     private String firstName;

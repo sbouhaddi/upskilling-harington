@@ -6,8 +6,6 @@ import com.harington.upskilling.privateSchool.application.ports.in.generics.Crud
 import com.harington.upskilling.privateSchool.application.ports.in.generics.UpdateRequest;
 import java.net.URI;
 import java.util.List;
-
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

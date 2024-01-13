@@ -26,5 +26,4 @@ public class StudentEntity implements DataModel<Student> {
 
     @Column(name = "matricule", nullable = false, length = 15)
     private String matricule;
-
 }

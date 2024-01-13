@@ -21,6 +21,4 @@ public class ClasseEntity implements DataModel<Classe> {
 
     @Column(name = "description", length = 50)
     private String description;
-
-
 }

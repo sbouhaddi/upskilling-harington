@@ -2,6 +2,4 @@ package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.m
 
 import com.harington.upskilling.privateSchool.application.domain.model.DomainModel;
 
-public interface DataModel<T extends DomainModel> {
-
-}
+public interface DataModel<T extends DomainModel> {}
