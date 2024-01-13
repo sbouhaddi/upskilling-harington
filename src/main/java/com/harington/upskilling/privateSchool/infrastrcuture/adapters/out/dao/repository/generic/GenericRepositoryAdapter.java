@@ -6,6 +6,7 @@ import com.harington.upskilling.privateSchool.domain.model.DomainModel;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.mapper.PersistanceMapper;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model.DataModel;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class GenericRepositoryAdapter<T extends DomainModel, E extends DataModel<T>> implements DomainDAOPort<T> {
 
@@ -34,7 +35,7 @@ public class GenericRepositoryAdapter<T extends DomainModel, E extends DataModel
         try {
             E entity = (E) genericJpaRepository.findById(id).get();
             return mapper.toDomainModel(entity);
-        } catch (NullPointerException exception) {
+        } catch (NoSuchElementException exception) {
             throw new RecordNotFoundException("Requested data with id " + id + " doest not exists");
         }
     }

@@ -17,7 +17,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(RecordNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleNotFoundException(RecordNotFoundException ex) {
         return new ResponseEntity<>(
-                new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage(), null), HttpStatus.OK);
+                new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage(), null), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(DataValidationException.class)

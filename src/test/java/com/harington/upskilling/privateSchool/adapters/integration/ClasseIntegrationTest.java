@@ -8,9 +8,9 @@ import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.re
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.ClassRule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -49,7 +49,11 @@ public class ClasseIntegrationTest {
     @Autowired
     ClasseJpaRepository classeJpaRepository;
 
-    @Before
+    private final String user = "admin";
+
+    private final String password = "admin";
+
+    @BeforeEach
     public void setUp() throws URISyntaxException {
         classeJpaRepository.deleteAll();
         final String baseUrl = "http://localhost:" + port.toString() + "/v1/classes";
@@ -60,11 +64,13 @@ public class ClasseIntegrationTest {
     public void whenNewClasseCreated_thenGetShouldRetunrThatClasse() {
         CreateClasseRequest createClasseRequest = new CreateClasseRequest("CP1", "Niveau ! du primaire");
         HttpEntity<CreateRequest> request = new HttpEntity<>(createClasseRequest);
-        ResponseEntity<String> response = this.testRestTemplate.postForEntity(uri, request, String.class);
+        ResponseEntity<String> response =
+                this.testRestTemplate.withBasicAuth(user, password).postForEntity(uri, request, String.class);
         Assert.assertEquals(HttpStatusCode.valueOf(201), response.getStatusCode());
 
         String location = (String) response.getHeaders().get("location").get(0);
-        ResponseEntity<Classe> result = this.testRestTemplate.getForEntity(location, Classe.class);
+        ResponseEntity<Classe> result =
+                this.testRestTemplate.withBasicAuth(user, password).getForEntity(location, Classe.class);
         Classe classe = result.getBody();
         Assert.assertEquals(createClasseRequest.libelle(), classe.libelle());
         Assert.assertEquals(classe.description(), createClasseRequest.description());
