@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  schooldb-pg:
+    image: postgres:16.1
+    container_name: schooldb
+    environment:
+      POSTGRES_DB: schooldb
+      POSTGRES_USER: posgress
+      POSTGRES_PASSWORD: posgres
+    ports:
+      - "5454:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    networks:
+      - schoolapp-net
+
+  private-school-app:
+    build: .
+    container_name: private-school-app
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8181:8080"
+    depends_on:
+      - schooldb-pg
+    networks:
+      - schoolapp-net
+networks:
+  schoolapp-net:
+    driver: bridge
+
