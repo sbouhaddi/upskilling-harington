@@ -1,8 +1,8 @@
 package com.harington.upskilling.privateSchool.application.ports.in.data;
 
+import com.harington.upskilling.privateSchool.application.ports.in.generics.CreateRequest;
 import com.harington.upskilling.privateSchool.domain.exceptions.DataValidationException;
 import com.harington.upskilling.privateSchool.domain.model.Classe;
-import com.harington.upskilling.privateSchool.application.ports.in.generics.CreateRequest;
 import java.util.Objects;
 
 public record CreateClasseRequest(String libelle, String description) implements CreateRequest<Classe> {

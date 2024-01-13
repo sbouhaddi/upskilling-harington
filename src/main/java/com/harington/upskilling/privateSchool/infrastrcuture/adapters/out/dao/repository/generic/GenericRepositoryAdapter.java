@@ -1,8 +1,8 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.generic;
 
+import com.harington.upskilling.privateSchool.application.ports.out.DomainDAOPort;
 import com.harington.upskilling.privateSchool.domain.exceptions.RecordNotFoundException;
 import com.harington.upskilling.privateSchool.domain.model.DomainModel;
-import com.harington.upskilling.privateSchool.application.ports.out.DomainDAOPort;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.mapper.PersistanceMapper;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model.DataModel;
 import java.util.List;
@@ -34,8 +34,8 @@ public class GenericRepositoryAdapter<T extends DomainModel, E extends DataModel
         try {
             E entity = (E) genericJpaRepository.findById(id).get();
             return mapper.toDomainModel(entity);
-        }catch (NullPointerException exception){
-            throw new RecordNotFoundException("Requested data with id "+id+" doest not exists");
+        } catch (NullPointerException exception) {
+            throw new RecordNotFoundException("Requested data with id " + id + " doest not exists");
         }
     }
 

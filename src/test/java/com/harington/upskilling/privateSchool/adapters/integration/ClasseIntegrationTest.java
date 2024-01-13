@@ -1,9 +1,9 @@
 package com.harington.upskilling.privateSchool.adapters.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.harington.upskilling.privateSchool.domain.model.Classe;
 import com.harington.upskilling.privateSchool.application.ports.in.data.CreateClasseRequest;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.CreateRequest;
+import com.harington.upskilling.privateSchool.domain.model.Classe;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.ClasseJpaRepository;
 import java.net.URI;
 import java.net.URISyntaxException;

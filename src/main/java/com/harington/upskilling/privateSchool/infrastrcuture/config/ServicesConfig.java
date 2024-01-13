@@ -1,13 +1,13 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.config;
 
-import com.harington.upskilling.privateSchool.domain.service.ClasseService;
-import com.harington.upskilling.privateSchool.domain.service.StudentService;
-import com.harington.upskilling.privateSchool.domain.service.SubjectService;
-import com.harington.upskilling.privateSchool.domain.service.TeacherService;
 import com.harington.upskilling.privateSchool.application.ports.in.ClasseUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.StudentUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.SubjectUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.TeacherUseCase;
+import com.harington.upskilling.privateSchool.domain.service.ClasseService;
+import com.harington.upskilling.privateSchool.domain.service.StudentService;
+import com.harington.upskilling.privateSchool.domain.service.SubjectService;
+import com.harington.upskilling.privateSchool.domain.service.TeacherService;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.ClasseRepositoryAdapter;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.StudentRepositoryAdapter;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.SubjectRepositoryAdapter;
@@ -21,10 +21,13 @@ public class ServicesConfig {
 
     @Autowired
     private ClasseRepositoryAdapter classeRepositoryAdapter;
+
     @Autowired
     private TeacherRepositoryAdapter teacherRepositoryAdapter;
+
     @Autowired
     private StudentRepositoryAdapter studentRepositoryAdapter;
+
     @Autowired
     private SubjectRepositoryAdapter subjectRepositoryAdapter;
 

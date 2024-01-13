@@ -1,7 +1,7 @@
 package com.harington.upskilling.privateSchool.application.ports.in.data;
 
-import com.harington.upskilling.privateSchool.domain.model.Student;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.UpdateRequest;
+import com.harington.upskilling.privateSchool.domain.model.Student;
 
 public class UpdateStudentRequest extends UpdateRequest<Student> {
 

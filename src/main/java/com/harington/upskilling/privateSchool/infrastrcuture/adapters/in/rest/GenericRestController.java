@@ -1,9 +1,9 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest;
 
-import com.harington.upskilling.privateSchool.domain.model.DomainModel;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.CreateRequest;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.CrudUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.UpdateRequest;
+import com.harington.upskilling.privateSchool.domain.model.DomainModel;
 import java.net.URI;
 import java.util.List;
 import org.springframework.http.HttpStatus;
