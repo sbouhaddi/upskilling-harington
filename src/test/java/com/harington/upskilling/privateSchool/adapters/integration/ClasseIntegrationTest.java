@@ -1,7 +1,7 @@
 package com.harington.upskilling.privateSchool.adapters.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.harington.upskilling.privateSchool.application.domain.model.Classe;
+import com.harington.upskilling.privateSchool.domain.model.Classe;
 import com.harington.upskilling.privateSchool.application.ports.in.data.CreateClasseRequest;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.CreateRequest;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.ClasseJpaRepository;
@@ -45,23 +45,6 @@ public class ClasseIntegrationTest {
     @ServiceConnection
     @ClassRule
     public static PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:16.1");
-
-    /* @BeforeAll
-    static void beforeAll() {
-        postgreSQLContainer.start();
-    }
-
-    @AfterAll
-    static void afterAll() {
-        postgreSQLContainer.stop();
-    }*/
-
-    /*@DynamicPropertySource
-    static void setProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
-        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
-        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
-    }*/
 
     @Autowired
     ClasseJpaRepository classeJpaRepository;

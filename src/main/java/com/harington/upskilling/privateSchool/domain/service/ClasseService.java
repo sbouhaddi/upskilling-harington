@@ -1,6 +1,6 @@
-package com.harington.upskilling.privateSchool.application.domain.service;
+package com.harington.upskilling.privateSchool.domain.service;
 
-import com.harington.upskilling.privateSchool.application.domain.model.Classe;
+import com.harington.upskilling.privateSchool.domain.model.Classe;
 import com.harington.upskilling.privateSchool.application.ports.in.ClasseUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.data.CreateClasseRequest;
 import com.harington.upskilling.privateSchool.application.ports.in.data.UpdateClasseRequest;

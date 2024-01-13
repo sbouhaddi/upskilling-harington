@@ -1,6 +1,6 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model;
 
-import com.harington.upskilling.privateSchool.application.domain.model.Subject;
+import com.harington.upskilling.privateSchool.domain.model.Subject;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

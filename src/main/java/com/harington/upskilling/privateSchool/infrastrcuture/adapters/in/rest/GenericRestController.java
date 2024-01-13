@@ -1,6 +1,6 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest;
 
-import com.harington.upskilling.privateSchool.application.domain.model.DomainModel;
+import com.harington.upskilling.privateSchool.domain.model.DomainModel;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.CreateRequest;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.CrudUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.UpdateRequest;
@@ -26,9 +26,9 @@ public class GenericRestController<T extends DomainModel, C extends CreateReques
 
     @PostMapping("")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public ResponseEntity<?> save(@RequestBody C createRequest) {
+    public ResponseEntity<Object> save(@RequestBody C createRequest) {
         T t = crudUseCase.create(createRequest);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+        final URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(t.id())
                 .toUri();

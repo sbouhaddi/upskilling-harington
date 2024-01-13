@@ -1,9 +1,10 @@
-package com.harington.upskilling.privateSchool.application.domain.service;
+package com.harington.upskilling.privateSchool.domain.service;
 
-import com.harington.upskilling.privateSchool.application.domain.model.DomainModel;
+import com.harington.upskilling.privateSchool.domain.model.DomainModel;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.CreateRequest;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.UpdateRequest;
 import com.harington.upskilling.privateSchool.application.ports.out.DomainDAOPort;
+
 import java.util.List;
 
 public class GenericService<T extends DomainModel, C extends CreateRequest<T>, U extends UpdateRequest<T>> {

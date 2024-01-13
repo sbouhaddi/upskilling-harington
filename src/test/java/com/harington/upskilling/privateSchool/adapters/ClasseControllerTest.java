@@ -7,8 +7,8 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.harington.upskilling.privateSchool.application.domain.exceptions.RecordNotFoundException;
-import com.harington.upskilling.privateSchool.application.domain.model.Classe;
+import com.harington.upskilling.privateSchool.domain.exceptions.RecordNotFoundException;
+import com.harington.upskilling.privateSchool.domain.model.Classe;
 import com.harington.upskilling.privateSchool.application.ports.in.ClasseUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.data.CreateClasseRequest;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest.ClasseController;

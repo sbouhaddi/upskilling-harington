@@ -1,6 +1,6 @@
 package com.harington.upskilling.privateSchool.application.ports.in.generics;
 
-import com.harington.upskilling.privateSchool.application.domain.model.DomainModel;
+import com.harington.upskilling.privateSchool.domain.model.DomainModel;
 import java.util.List;
 
 public interface CrudUseCase<T extends DomainModel, C extends CreateRequest<T>, U extends UpdateRequest<T>>

@@ -1,6 +1,6 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.mapper;
 
-import com.harington.upskilling.privateSchool.application.domain.model.Classe;
+import com.harington.upskilling.privateSchool.domain.model.Classe;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model.ClasseEntity;
 
 public class ClassePersistanceMapper implements PersistanceMapper<Classe, ClasseEntity> {

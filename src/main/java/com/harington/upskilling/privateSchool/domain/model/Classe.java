@@ -1,4 +1,4 @@
-package com.harington.upskilling.privateSchool.application.domain.model;
+package com.harington.upskilling.privateSchool.domain.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

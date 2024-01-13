@@ -1,6 +1,6 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.adapters.in.rest;
 
-import com.harington.upskilling.privateSchool.application.domain.model.Teacher;
+import com.harington.upskilling.privateSchool.domain.model.Teacher;
 import com.harington.upskilling.privateSchool.application.ports.in.TeacherUseCase;
 import com.harington.upskilling.privateSchool.application.ports.in.data.CreateTeacherRequest;
 import com.harington.upskilling.privateSchool.application.ports.in.data.UpdateTeacherRequest;

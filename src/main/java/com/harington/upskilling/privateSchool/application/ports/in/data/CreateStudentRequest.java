@@ -1,6 +1,6 @@
 package com.harington.upskilling.privateSchool.application.ports.in.data;
 
-import com.harington.upskilling.privateSchool.application.domain.model.Student;
+import com.harington.upskilling.privateSchool.domain.model.Student;
 import com.harington.upskilling.privateSchool.application.ports.in.generics.CreateRequest;
 
 public record CreateStudentRequest() implements CreateRequest<Student> {

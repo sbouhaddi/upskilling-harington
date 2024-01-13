@@ -1,6 +1,6 @@
 package com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository;
 
-import com.harington.upskilling.privateSchool.application.domain.model.Classe;
+import com.harington.upskilling.privateSchool.domain.model.Classe;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.mapper.ClassePersistanceMapper;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.model.ClasseEntity;
 import com.harington.upskilling.privateSchool.infrastrcuture.adapters.out.dao.repository.generic.GenericRepositoryAdapter;
