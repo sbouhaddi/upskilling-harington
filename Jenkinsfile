@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    tools {
-      jdk 'openjdk17'
-    }
 	stages {
 	    stage('checkout'){
             steps{
