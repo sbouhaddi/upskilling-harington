@@ -1,11 +1,13 @@
 pipeline {
     agent any
     tools {
-      openJDK 'openjdk17'
+      jdk 'openjdk17'
     }
 	stages {
 	    stage('checkout'){
-            checkout scm
+            steps{
+                checkout scm
+            }
 	    }
 		stage('Build'){
 			steps {
