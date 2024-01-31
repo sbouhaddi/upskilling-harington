@@ -11,8 +11,8 @@ public class PrivateSchoolApplication {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(PrivateSchoolApplication.class);
-        Set<String> profiles =
+        /*Set<String> profiles =
                 new HashSet<>(Arrays.asList(app.run(args).getEnvironment().getActiveProfiles()));
-        System.out.println("Active profiles: " + profiles);
+        System.out.println("Active profiles: " + profiles);*/
     }
 }
