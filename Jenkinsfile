@@ -38,15 +38,18 @@ pipeline {
                         versions:commit"
 
                     def updatedVersion = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true).trim()
-                    env.IMAGE_NAME = "$updatedVersion"
-                    echo "Incremented version: ${updatedVersion}"
+                    def buildNumber = env.BUILD_NUMBER
+                    def commitSha = sh(script: "git rev-parse HEAD", returnStdout: true).trim()
+                    env.IMAGE_VERSION = "$updatedVersion-$buildNumber-$commitSha"
+                    echo "Incremented version: ${env.IMAGE_VERSION}"
                }
             }
         }
 
 		stage('Build Docker image') {
             steps {
-                 sh "docker build -t private-school:$IMAGE_NAME ."
+
+                 sh "docker build -t private-school:$IMAGE_NAME-$ ."
             }
         }
 	}
