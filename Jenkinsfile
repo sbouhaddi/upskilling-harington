@@ -17,7 +17,7 @@ pipeline {
 	    }
 	    stage('Code coverage check'){
 	        steps{
-	            sh "mvn clean test jacoco:prepare"
+	            sh "mvn clean test jacoco:prepare-agent"
 	            sh "mvn jacoco:check"
 	        }
 	    }
