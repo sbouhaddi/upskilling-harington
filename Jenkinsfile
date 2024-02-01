@@ -10,6 +10,11 @@ pipeline {
                 checkout scm
             }
 	    }
+	    stage('Spotless Check'){
+	        steps{
+	            sh "mvn spotless:check"
+	        }
+	    }
 		stage('Build'){
 			steps {
 				sh "mvn clean install -DskipTests"
