@@ -1,8 +1,5 @@
 package com.harington.upskilling.privateSchool;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
