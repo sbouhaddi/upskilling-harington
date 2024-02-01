@@ -15,6 +15,13 @@ pipeline {
 	            sh "mvn spotless:check"
 	        }
 	    }
+	    stage('Code coverage check'){
+	        steps{
+	            sh "mvn clean test jacoco:prepare"
+	            sh "mvn jacoco:check"
+	        }
+	    }
+
 		stage('Build'){
 			steps {
 				sh "mvn clean install -DskipTests"
